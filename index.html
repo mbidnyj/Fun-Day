@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FunDay - Landing Page</title>
+  <!-- Google Font for a modern look -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* Particles Background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+    /* Hero Section */
+    header {
+      text-align: center;
+      padding: 120px 20px;
+      background: transparent;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    header p {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    /* Fun Points Container */
+    .points-container {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      margin-bottom: 40px;
+    }
+    .points-container .point {
+      position: absolute;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      opacity: 0; /* Start hidden for animation */
+    }
+    /* Positions for 14 fun points – adjusted to be closer to the center */
+    .points-container .point:nth-child(1) {
+      top: 20%;
+      left: 20%;
+      transform: rotate(-5deg);
+      font-size: 1.4rem;
+      background-color: rgba(247,137,69, 0.9);
+      color: #fff;
+    }
+    .points-container .point:nth-child(2) {
+      top: 15%;
+      right: 20%;
+      transform: rotate(2deg);
+      font-size: 1rem;
+      background-color: rgba(247,137,69, 0.85);
+      color: #fff;
+    }
+    .points-container .point:nth-child(3) {
+      top: 30%;
+      left: 15%;
+      transform: rotate(-10deg);
+      font-size: 1.1rem;
+      background-color: rgba(247,137,69, 0.88);
+      color: #fff;
+    }
+    .points-container .point:nth-child(4) {
+      top: 30%;
+      right: 15%;
+      transform: rotate(8deg);
+      font-size: 1.3rem;
+      background-color: rgba(247,137,69, 0.95);
+      color: #fff;
+    }
+    .points-container .point:nth-child(5) {
+      top: 45%;
+      left: 25%;
+      transform: rotate(-2deg);
+      font-size: 1rem;
+      background-color: rgba(247,137,69, 0.85);
+      color: #fff;
+    }
+    .points-container .point:nth-child(6) {
+      top: 45%;
+      right: 25%;
+      transform: rotate(12deg);
+      font-size: 1.2rem;
+      background-color: rgba(247,137,69, 0.9);
+      color: #fff;
+    }
+    .points-container .point:nth-child(7) {
+      bottom: 35%;
+      left: 20%;
+      transform: rotate(6deg);
+      font-size: 1.3rem;
+      background-color: rgba(247,137,69, 0.88);
+      color: #fff;
+    }
+    .points-container .point:nth-child(8) {
+      bottom: 35%;
+      right: 20%;
+      transform: rotate(-7deg);
+      font-size: 1rem;
+      background-color: rgba(247,137,69, 0.85);
+      color: #fff;
+    }
+    .points-container .point:nth-child(9) {
+      bottom: 20%;
+      left: 30%;
+      transform: rotate(4deg);
+      font-size: 1.2rem;
+      background-color: rgba(247,137,69, 0.9);
+      color: #fff;
+    }
+    .points-container .point:nth-child(10) {
+      bottom: 20%;
+      right: 30%;
+      transform: rotate(-3deg);
+      font-size: 0.9rem;
+      background-color: rgba(247,137,69, 0.88);
+      color: #fff;
+    }
+    .points-container .point:nth-child(11) {
+      top: 40%;
+      left: 45%;
+      transform: rotate(3deg);
+      font-size: 1.1rem;
+      background-color: rgba(247,137,69, 0.9);
+      color: #fff;
+    }
+    .points-container .point:nth-child(12) {
+      top: 25%;
+      left: 40%;
+      transform: rotate(-4deg);
+      font-size: 1rem;
+      background-color: rgba(247,137,69, 0.85);
+      color: #fff;
+    }
+    .points-container .point:nth-child(13) {
+      bottom: 25%;
+      right: 40%;
+      transform: rotate(5deg);
+      font-size: 1.1rem;
+      background-color: rgba(247,137,69, 0.88);
+      color: #fff;
+    }
+    .points-container .point:nth-child(14) {
+      top: 35%;
+      right: 40%;
+      transform: rotate(-2deg);
+      font-size: 1rem;
+      background-color: rgba(247,137,69, 0.85);
+      color: #fff;
+    }
+    /* Get Started Button */
+    .btn {
+      background: linear-gradient(45deg, #fff, #f0f0f0);
+      color: #fda085;
+      border: 2px solid #fda085;
+      padding: 20px 40px;
+      font-size: 1.5rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .btn:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #fff, #eaeaea);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 3rem;
+      }
+      header p {
+        font-size: 1.2rem;
+      }
+      .points-container {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+
+  <!-- Hero Section -->
+  <header>
+    <h1>FunDay</h1>
+    <p>Start your day with a burst of laughter & brighten your mood!</p>
+    <!-- Fun Points -->
+    <div class="points-container">
+      <div class="point">Brighten Your Morning</div>
+      <div class="point">Personalized Humor</div>
+      <div class="point">Tailored Jokes</div>
+      <div class="point">Daily Laughter</div>
+      <div class="point">Mood Booster</div>
+      <div class="point">Custom Topics</div>
+      <div class="point">Instant Smile</div>
+      <div class="point">Happiness Delivered</div>
+      <div class="point">Fun Awaits</div>
+      <div class="point">Laugh Out Loud</div>
+      <div class="point">Spread Joy</div>
+      <div class="point">Be Inspired</div>
+      <div class="point">Stay Cheery</div>
+      <div class="point">Enjoy Life</div>
+    </div>
+    <button class="btn" id="getStartedBtn">Get Started</button>
+  </header>
+
+  <!-- Scripts -->
+  <!-- Load Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <!-- Load GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/gsap.min.js"></script>
+  <script>
+    // Initialize particles.js for an interactive background
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": { "enable": true, "value_area": 800 }
+        },
+        "color": { "value": "#ffffff" },
+        "shape": {
+          "type": "circle",
+          "stroke": { "width": 0, "color": "#000000" }
+        },
+        "opacity": { "value": 0.5, "random": false },
+        "size": { "value": 3, "random": true },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
+        },
+        "modes": {
+          "repulse": { "distance": 200 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // GSAP animations for hero elements
+    gsap.from("header h1", { duration: 1, y: -50, opacity: 0, ease: "power2.out" });
+    gsap.from("header p", { duration: 1, delay: 0.5, y: -30, opacity: 0, ease: "power2.out" });
+    gsap.to(".points-container .point", { duration: 1, opacity: 1, delay: 1.2, stagger: 0.2 });
+    gsap.from(".btn", { duration: 1, delay: 1.5, scale: 0.8, opacity: 0, ease: "back.out(1.7)" });
+
+    // On button click, open the Google Sign-In page
+    document.getElementById("getStartedBtn").addEventListener("click", function() {
+      window.location.href = "https://accounts.google.com/signin";
+    });
+  </script>
+</body>
+</html>
