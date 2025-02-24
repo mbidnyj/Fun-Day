@@ -356,7 +356,7 @@
       const data = { email, languages, startHour, topics };
       
       // Send data to localhost subscribe endpoint
-      fetch("http://localhost:3000/subscribe", {
+      fetch("http://localhost:3000/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)

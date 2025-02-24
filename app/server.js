@@ -5,9 +5,12 @@ import express from 'express';
 import { connectDB } from './src/config/db.js';
 import subscriptionRoutes from './src/routes/subscriptionRoutes.js';
 import mailingJob from './src/jobs/mailingJob.js';
+import cors from 'cors';
 
 const app = express();
+app.use(express.static('www'));
 app.use(express.json());
+app.use(cors());
 
 // Connect to MongoDB
 connectDB();
