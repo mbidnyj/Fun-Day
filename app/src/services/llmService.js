@@ -11,14 +11,16 @@ const openai = new OpenAI({
  * @param {string[]} topics - Array of topics of interest.
  * @returns {Promise<string>} - The generated summary text.
  */
-export const getResponse = async () => {
-  const prompt = "What's the capital of Ukraine?";
+const getResponse = async (topics) => {
+  const basePrompt = "Create a sharp and precise political joke in the style of George Carlin. Be as direct and uncompromising as he was known to be.";
+  
   try {
     const response = await openai.completions.create({
-      model: "gpt-4o",
-      prompt
+      model: "gpt-4",
+      prompt: `${basePrompt} Focus on these topics: ${topics.join(', ')}`,
     });
-    const text = response.data.choices[0].text.trim();
+    
+    const text = response.choices[0].text.trim();
     console.log("LLM Response:", text);
     return text;
   } catch (error) {
@@ -29,3 +31,5 @@ export const getResponse = async () => {
     throw error;
   }
 };
+
+export { getResponse };
